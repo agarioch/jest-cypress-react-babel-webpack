@@ -1,14 +1,13 @@
 import React from 'react'
-import {render} from '@testing-library/react'
+import {render} from 'calculator-test-utils'
 import CalculatorDisplay from '../calculator-display'
 
 test('renders', () => {
-  const {container} = render(<CalculatorDisplay value="0" />)
-  expect(container).toMatchInlineSnapshot(`
+  const {container, rerender} = render(<CalculatorDisplay value="0" />)
+  rerender(<CalculatorDisplay value="1" />)
+  expect(container.firstChild).toMatchInlineSnapshot(`
     .emotion-0 {
       position: relative;
-      color: white;
-      background: #1c191c;
       line-height: 130px;
       font-size: 6em;
       -webkit-flex: 1;
@@ -16,17 +15,15 @@ test('renders', () => {
       flex: 1;
     }
 
-    <div>
+    <div
+      class="emotion-0 emotion-1"
+    >
       <div
-        class="emotion-0"
+        class="autoScalingText"
+        data-testid="total"
+        style="transform: scale(1,1);"
       >
-        <div
-          class="autoScalingText"
-          data-testid="total"
-          style="transform: scale(1,1);"
-        >
-          0
-        </div>
+        1
       </div>
     </div>
   `)
