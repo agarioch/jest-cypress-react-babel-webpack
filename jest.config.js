@@ -18,4 +18,6 @@ module.exports = {
   snapshotSerializers: ['@emotion/jest/serializer'],
   // automatically import the file into all test files
   setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
+  // include all js files in src ignore other files e.g. tests
+  collectCoverageFrom: ['**/src/**/*.js'],
 }
